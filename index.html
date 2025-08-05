@@ -2,15 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome</title>
-  <script>
-    window.onload = function () {
-      window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1", "_blank");
-    };
-  </script>
+  <title>Mini's Cool Roadblox Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e1e;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+    .ui-box {
+      background-color: #2c2c2c;
+      border: 4px solid #00aaff;
+      border-radius: 12px;
+      padding: 40px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 0 20px #00aaff55;
+    }
+    .ui-box h1 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .play-button {
+      padding: 10px 25px;
+      font-size: 16px;
+      color: white;
+      background-color: #00aaff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .play-button:hover {
+      background-color: #0088cc;
+    }
+  </style>
 </head>
 <body>
-  <h1>Loading...</h1>
-  <p>Please wait while we redirect you...</p>
+  <div class="ui-box">
+    <h1>Mini's Cool Roadblox Game</h1>
+    <button class="play-button" onclick="openRickroll()">Play</button>
+  </div>
+
+  <script>
+    function openRickroll() {
+      const win = window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1", "_blank");
+      if (!win || win.closed || typeof win.closed === "undefined") {
+        alert("Popup blocked! Please allow popups for this site.");
+      }
+    }
+
+    // Optional: auto-open attempt on load
+    window.onload = function () {
+      const auto = window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1", "_blank");
+    };
+  </script>
 </body>
 </html>
