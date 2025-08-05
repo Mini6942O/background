@@ -44,34 +44,43 @@
     .play-button:hover {
       background-color: #0088cc;
     }
+    #video-container {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
+      max-width: 90%;
+      max-height: 90%;
+    }
   </style>
 </head>
 <body>
-  <div class="ui-box">
+  <div class="ui-box" id="menu">
     <h1>Mini's Cool Roadblox Game</h1>
     <button class="play-button" onclick="playVideo()">Play</button>
   </div>
 
+  <div id="video-container">
+    <video id="rickroll" autoplay controls>
+      <source src="https://dn720407.ca.archive.org/0/items/rick-roll/Rick%20Roll.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <script>
     function playVideo() {
-      const videoHTML = `
-        <html>
-          <head><title>Rickroll</title></head>
-          <body style="margin:0; background:black; display:flex; justify-content:center; align-items:center; height:100vh;">
-            <video width="720" height="480" controls autoplay>
-              <source src="https://dn720407.ca.archive.org/0/items/rick-roll/Rick%20Roll.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </body>
-        </html>
-      `;
-      const videoWindow = window.open('', '_blank', 'width=800,height=600');
-      if (videoWindow) {
-        videoWindow.document.write(videoHTML);
-        videoWindow.document.close();
-      } else {
-        alert("Popup blocked! Please allow popups for this site.");
-      }
+      document.getElementById("menu").style.display = "none";
+      const container = document.getElementById("video-container");
+      const video = document.getElementById("rickroll");
+      container.style.display = "flex";
+      video.play();
     }
   </script>
 </body>
