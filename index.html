@@ -49,21 +49,30 @@
 <body>
   <div class="ui-box">
     <h1>Mini's Cool Roadblox Game</h1>
-    <button class="play-button" onclick="openRickroll()">Play</button>
+    <button class="play-button" onclick="playVideo()">Play</button>
   </div>
 
   <script>
-    function openRickroll() {
-      const win = window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1", "_blank");
-      if (!win || win.closed || typeof win.closed === "undefined") {
+    function playVideo() {
+      const videoHTML = `
+        <html>
+          <head><title>Rickroll</title></head>
+          <body style="margin:0; background:black; display:flex; justify-content:center; align-items:center; height:100vh;">
+            <video width="720" height="480" controls autoplay>
+              <source src="https://dn720407.ca.archive.org/0/items/rick-roll/Rick%20Roll.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </body>
+        </html>
+      `;
+      const videoWindow = window.open('', '_blank', 'width=800,height=600');
+      if (videoWindow) {
+        videoWindow.document.write(videoHTML);
+        videoWindow.document.close();
+      } else {
         alert("Popup blocked! Please allow popups for this site.");
       }
     }
-
-    // Optional: auto-open attempt on load
-    window.onload = function () {
-      const auto = window.open("https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1", "_blank");
-    };
   </script>
 </body>
 </html>
